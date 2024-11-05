@@ -16,7 +16,7 @@
 
 ### Documentation
 
-To explore CUtils in detail, please refer to the complete [CUtils Documentation](https://developer-website.com/docs).
+To explore CUtils in detail, please refer to the complete [CUtils Documentation](https://case-technologies.ru/Documents/Documentation%20for%20CUtils.pdf).
 
 ### Build Instructions
 
@@ -49,7 +49,7 @@ To build the CUtils library using CMake, follow these steps:
 
 ### Документация
 
-Полную документацию по CUtils вы можете найти по следующей ссылке: [Документация CUtils](https://developer-website.com/docs).
+Полную документацию по CUtils вы можете найти по следующей ссылке: [Документация CUtils](https://case-technologies.ru/Documents/Documentation%20for%20CUtils.pdf).
 
 ### Инструкция по сборке
 
