@@ -2,11 +2,7 @@
 // Copyright © 2024 Case Technologies
 
 #pragma once
-#include <string>
-#include <typeinfo>
-#include <typeindex>
-#include <unordered_map>
-#include <memory>
+#include "Common.hpp"
 
 namespace CUtils
 {

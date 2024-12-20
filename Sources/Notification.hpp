@@ -2,12 +2,7 @@
 // Copyright © 2024 Case Technologies
 
 #pragma once
-#include <string>
-#include <iostream>
-
-#ifdef _WIN32 || _WIN64
-#include <windows.h> 
-#endif
+#include "Common.hpp"
 
 namespace CUtils
 {

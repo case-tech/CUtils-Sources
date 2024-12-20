@@ -2,9 +2,7 @@
 // Copyright © 2024 Case Technologies
 
 #pragma once
-#include <vector>
-#include <cmath>
-#include <cstdlib>
+#include "Common.hpp"
 
 namespace CUtils
 {

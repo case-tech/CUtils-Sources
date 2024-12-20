@@ -2,37 +2,55 @@
 
 namespace CUtils
 {
-    Timer::Timer() : isRunning_(false) {}
-   
-    void Timer::Start() 
-    {
-        startTime_ = std::chrono::high_resolution_clock::now();
-        isRunning_ = true;
-    }
+	Timer::Timer()
+	{
+		start_ = std::chrono::high_resolution_clock::now();
+		stop_  = std::chrono::high_resolution_clock::now();
+	}
 
-    void Timer::Stop() 
-    {
-        if (isRunning_) 
-        {
-            endTime_ = std::chrono::high_resolution_clock::now();
-            isRunning_ = false;
-        }
-    }
+	double Timer::GetMilisecondsElapsed()
+	{
+		if (isRunning_)
+		{
+			auto elapsed = std::chrono::duration<double, std::milli>(std::chrono::high_resolution_clock::now() - start_);
+			return elapsed.count();
+		}
+		else
+		{
+			auto elapsed = std::chrono::duration<double, std::milli>(stop_ - start_);
+			return elapsed.count();
+		}
+	}
 
-    void Timer::Reset() 
-    {
-        isRunning_ = false;
-    }
+	void Timer::Restart()
+	{
+		isRunning_ = true;
+		start_ = std::chrono::high_resolution_clock::now();
+	}
 
-    double Timer::Elapsed() const 
-    {
-        auto end = isRunning_ ? std::chrono::high_resolution_clock::now() : endTime_;
-        auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - startTime_);
-        return duration.count() / 1e6; 
-    }
+	bool Timer::Stop()
+	{
+		if (!isRunning_)
+			return false;
+		else
+		{
+			stop_ = std::chrono::high_resolution_clock::now();
+			isRunning_ = false;
+			return true;
+		}
+	}
 
-    void Timer::PrintElapsed() const 
-    {
-        std::cout << "Elapsed time: " << Elapsed() << " seconds\n";
-    }
+	bool Timer::Start()
+	{
+		if (isRunning_)
+		{
+			return false;
+		}
+		else
+		{
+			start_ = std::chrono::high_resolution_clock::now();
+			isRunning_ = true;
+			return true;
+		}
+	}
 }

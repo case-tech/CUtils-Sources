@@ -2,7 +2,7 @@ set(PROJECT_NAME CUtils)
 
 # Source groups
 set(Header_Files
-    "Hashed.hpp"
+    "Encryption.hpp"
     "INIParser.hpp"
     "NoisePerlin.hpp"
     "Notification.hpp"
@@ -12,11 +12,20 @@ set(Header_Files
     "SystemConfiguration.hpp"
     "Timer.hpp"
     "UnitTests.hpp"
+    "StringHelper.hpp"
+    "Macroses.hpp"
+    "Filesystem.hpp"
+    "Plugins.hpp"
+    "Multithread.hpp"
+    "Fusion.hpp"
+    "Random.hpp"
+    "Coroutine.hpp"
+    "DateTime.hpp"
 )
 source_group("Header Files" FILES ${Header_Files})
 
 set(Source_Files
-    "Hashed.cpp"
+    "Encryption.cpp"
     "INIParser.cpp"
     "NoisePerlin.cpp"
     "Notification.cpp"
@@ -26,12 +35,27 @@ set(Source_Files
     "SystemConfiguration.cpp"
     "Timer.cpp"
     "UnitTests.cpp"
+    "StringHelper.cpp"
+    "Macroses.cpp"
+    "Filesystem.cpp"
+    "Plugins.cpp"
+    "Multithread.cpp"
+    "Fusion.cpp"
+    "Random.cpp"
+    "Coroutine.cpp"
+    "DateTime.cpp"
 )
 source_group("Source Files" FILES ${Source_Files})
+
+set(no_group
+	"Common.hpp"
+)
+source_group(" " FILES ${no_group})
 
 set(ALL_FILES
     ${Header_Files}
     ${Source_Files}
+	${no_group}
 )
 
 # Target
@@ -57,6 +81,7 @@ if("${CMAKE_VS_PLATFORM_NAME}" STREQUAL "x64")
         "UNICODE;"
         "_UNICODE"
     )
+
 elseif("${CMAKE_VS_PLATFORM_NAME}" STREQUAL "x86")
     target_compile_definitions(${PROJECT_NAME} PRIVATE
         "$<$<CONFIG:Debug>:"

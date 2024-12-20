@@ -2,12 +2,10 @@
 // Copyright © 2024 Case Technologies
 
 #pragma once
-#include <iostream>
-#include <vector>
-#include <functional>
-#include <cmath>
-#include <cstring>
-#include <string>
+#include "Common.hpp"
+
+namespace CUtils
+{
 
 #define ASSERT_TRUE(condition) \
         if (!(condition))      \
@@ -80,8 +78,6 @@
     } test_case_name##_##test_name##_instance; \
     void test_case_name##_##test_name()
 
-namespace CUtils
-{
     struct Test 
     {
         std::string test_case_name;

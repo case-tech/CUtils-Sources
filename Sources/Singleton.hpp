@@ -2,8 +2,7 @@
 // Copyright © 2024 Case Technologies
 
 #pragma once
-#include <memory>
-#include <mutex>
+#include "Common.hpp"
 
 namespace CUtils
 {
