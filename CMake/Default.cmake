@@ -1,8 +1,3 @@
-################################################################################
-# Command for variable_watch. This command issues error message, if a variable
-# is changed. If variable PROPERTY_READER_GUARD_DISABLED is TRUE nothing happens
-#     variable_watch(<variable> property_reader_guard)
-################################################################################
 function(property_reader_guard VARIABLE ACCESS VALUE CURRENT_LIST_FILE STACK)
     if("${PROPERTY_READER_GUARD_DISABLED}")
         return()
@@ -20,15 +15,6 @@ function(property_reader_guard VARIABLE ACCESS VALUE CURRENT_LIST_FILE STACK)
     endif()
 endfunction()
 
-################################################################################
-# Create variable <name> with generator expression that expands to value of
-# target property <name>_<CONFIG>. If property is empty or not set then property
-# <name> is used instead. Variable <name> has watcher property_reader_guard that
-# doesn't allow to edit it.
-#     create_property_reader(<name>)
-# Input:
-#     name - Name of watched property and output variable
-################################################################################
 function(create_property_reader NAME)
     set(PROPERTY_READER_GUARD_DISABLED TRUE)
     set(CONFIG_VALUE "$<TARGET_GENEX_EVAL:${PROPS_TARGET},$<TARGET_PROPERTY:${PROPS_TARGET},${NAME}_$<UPPER_CASE:$<CONFIG>>>>")
@@ -38,18 +24,9 @@ function(create_property_reader NAME)
     variable_watch("${NAME}" property_reader_guard)
 endfunction()
 
-################################################################################
-# Set property $<name>_${PROPS_CONFIG_U} of ${PROPS_TARGET} to <value>
-#     set_config_specific_property(<name> <value>)
-# Input:
-#     name  - Prefix of property name
-#     value - New value
-################################################################################
 function(set_config_specific_property NAME VALUE)
     set_target_properties("${PROPS_TARGET}" PROPERTIES "${NAME}_${PROPS_CONFIG_U}" "${VALUE}")
 endfunction()
-
-################################################################################
 
 create_property_reader("TARGET_NAME")
 create_property_reader("OUTPUT_DIRECTORY")
